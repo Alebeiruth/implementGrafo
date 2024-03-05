@@ -10,23 +10,28 @@ grafo["peggy"] = []
 grafo["thom"] = []
 grafo["jonny"] = []
 
-fila_de_pesquisa = deque()
-fila_de_pesquisa += grafo["voce"]
 
 def pessoa_e_vendedor(nome):
     return nome[-1] == "m"
 
 encontrou_vendedor = False
 
-while fila_de_pesquisa:
-    pessoa = fila_de_pesquisa.popleft()
-    if pessoa_e_vendedor(pessoa):
-        print(pessoa + " é um vendedor de manga!")
-        encontrou_vendedor = True
-        break
-    else:
-        fila_de_pesquisa += grafo[pessoa]
+def pesquisa(nome):
+    fila_de_pesquisa = deque
+    fila_de_pesquisa += grafo[nome]
+    verificadas = []
+    while fila_de_pesquisa:
+        pessoa = fila_de_pesquisa.popleft()
+        if not pessoa in verificadas:
+            if pessoa_e_vendendot(pessoa):
+                print (pessoa + "é um vendedor de manga!")
+                return True
+            else:
+                fila_de_pesquisa += grafo[pessoa]
+                verificadas.append(pessoa)
+        
+    return False
 
-if not encontrou_vendedor:
-    print("Não foi encontrado um vendedor de manga na rede de contatos.")
+
+pesquisa("voce")
 
